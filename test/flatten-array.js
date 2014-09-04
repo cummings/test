@@ -4,10 +4,10 @@ describe('flatten array', function () {
         arr = [1, 2, [1, 2, [3, 4, 5, [1]]], 2, [2]],
         expected = [1, 1, 1, 2, 2, 2, 2, 3, 4, 5];
 
-   function go(arra) {
+   function flatten(arr) {
       var self = arguments.callee;
 
-      arra.forEach(function (item) {
+      arr.forEach(function (item) {
         if(typeof item === 'object') {
           self(item);
         } else {
@@ -17,7 +17,7 @@ describe('flatten array', function () {
 
       return tmpArray;
     }
-    arr =  go(arr).sort();
+    arr =  flatten(arr).sort();
 
     expect(arr).toEqual(expected);
   });
